@@ -1,0 +1,202 @@
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  
+  justify-content: center;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 28rem;
+  max-height: 28rem;
+  background: var(--base-container);
+  border-radius: 8px;
+
+  padding: 1rem ;
+
+  gap: 1rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  gap: 1rem;
+}
+.header > img {
+  width: 9rem;
+  height: 2rem;
+}
+.infoUser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.infoUser strong {
+  font-family: Roboto;
+  font-size: 1rem;
+  line-height: 160%;
+  font-weight: 700;
+
+  color: var(--base-title);
+}
+.infoUser span {
+  font-family: Roboto;
+  font-size: 1rem;
+  line-height: 160%;
+  font-weight: 700;
+
+  color: var(--brand-blue);
+}
+/* Header */
+
+.gridRepositorys{
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Repository */
+.repository {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-right: 4px;
+
+  background: var(--base-card);
+  border-radius: 8px;
+}
+.repository > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  font-family: Roboto;
+  font-size: 0.875rem;
+  line-height: 160%;
+  font-weight: 700;
+  color: var(--base-title);
+}
+.iconButton {
+  background: transparent;
+  border: none;
+  line-height: 0;
+}
+
+.infoRepository {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.infoRepository strong {
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: var(--base-title);
+}
+.infoRepository div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.infoRepository div span {
+  font-family: Roboto;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-top: 2px;
+
+  color: var(--base-title);
+}
+.iconButton .likeIcon {
+  color: var(--base-description);
+  cursor: pointer;
+}
+.iconButton .likeIcon:hover {
+  color: var(--brand-blue);
+  transition: 1s color;
+}
+
+.avatar {
+  object-fit: cover;
+
+  width: calc(3rem + 12px);
+  height: calc(3rem + 12px);
+
+  border-radius: 8px;
+  border: 4px solid var(--base-container);
+  outline: 2px solid var(--brand-blue);
+}
+
+.iconButton .trashIcon {
+  color: var(--base-description);
+  cursor: pointer;
+}
+.iconButton .trashIcon:hover {
+  color: var(--brand-red);
+  transition: 1s color;
+}
+/* Repository */
+
+/* Footer */
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+.form input {
+  width: 100%;
+  background: var(--base-background);
+  border-radius: 8px;
+  border: 1px solid var(--brand-blue);
+  height: 3rem;
+  padding: 1rem;
+  color: var(--base-description);
+}
+.form input:focus {
+  border: 1px solid var(--brand-blue);
+}
+.form button[type="submit"]{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-blue);
+  border-radius: 8px;  
+  border: none;
+  cursor: pointer;
+  height: 3rem;
+  width: 3.5rem;
+}
+.form button[type="submit"]:disabled {
+  cursor: not-allowed;
+}
+.form button[type="submit"]:hover {
+  opacity: 0.9;
+}
+.form button[type="submit"] svg {
+  color: var(--base-title);
+}
+/* Footer */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  .content {
+    width: 20rem;
+  }
+}

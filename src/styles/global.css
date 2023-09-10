@@ -1,0 +1,55 @@
+:root {
+  --base-title: #e1e1e6;
+  --base-subtitle: #8d8d99;
+  --base-description: #c4c4cc;
+  --base-card: #29292e;
+  --base-container: #202024;
+  --base-background: #121214;
+
+  --brand-blue: #0072bc;
+  --brand-red: #C60B0B;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--base-background);
+  color: var(--base-description);
+  -webkit-font-smoothing: antialiased;
+  -moz-osxx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body,
+input,
+button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 1px transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--base-container);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--base-card);
+  border-radius: 6px;
+}

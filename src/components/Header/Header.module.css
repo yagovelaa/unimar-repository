@@ -1,0 +1,37 @@
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  gap: 1rem;
+}
+.header > img {
+  width: 9rem;
+  height: 2rem;
+}
+.infoUser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.infoUser strong {
+  font-family: Roboto;
+  font-size: 1rem;
+  line-height: 160%;
+  font-weight: 700;
+
+  color: var(--base-title);
+}
+.infoUser span {
+  font-family: Roboto;
+  font-size: 1rem;
+  line-height: 160%;
+  font-weight: 700;
+
+  color: var(--brand-blue);
+}
+/* Header */

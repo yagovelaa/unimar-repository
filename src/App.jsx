@@ -1,58 +1,93 @@
-import { Trash, PaperPlaneRight, ThumbsUp } from '@phosphor-icons/react'
+import { useState, useEffect } from 'react'
 
-import LogoUnimar from './assets/unimar-logo.svg'
+import { PaperPlaneRight } from '@phosphor-icons/react'
+
+import { Repository } from './components/Repository'
+import { Header } from './components/Header'
+
 import styled from './App.module.css'
 
-function App() {
+const userAuthenticated = {
+  name: 'Yago Vela',
+  role: 'Dev Front-end',
+  username: 'yagovelaa',
+}
+
+export function App() {
+  const [repositories, setRepositories] = useState([])
+  const [newTitleRepository, setNewTitleRepository] = useState('')
+  const { name, role, username } = userAuthenticated
+
+  useEffect(() => {
+    async function getAllRepositoriesToUser() {
+      try {
+        const response = await fetch(
+          `https://api.github.com/users/${username}/repos`,
+        )
+        const repositories = await response.json()
+
+        const allRepositories = repositories.map((repo) => ({
+          name: repo.name,
+        }))
+
+        setRepositories(allRepositories)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getAllRepositoriesToUser()
+  }, [username])
+
+  function handleCreateNewRepository(event) {
+    event.preventDefault()
+
+    setRepositories([...repositories, { name: newTitleRepository }])
+    setNewTitleRepository('')
+  }
+
+  function handleAddNewTextRepository(event) {
+    setNewTitleRepository(event.target.value)
+  }
+
+  function deleteRepository(repositoryToDelete) {
+    const repositoryWithoutDeletedOne = repositories.filter((repository) => {
+      return repository.name !== repositoryToDelete
+    })
+
+    setRepositories(repositoryWithoutDeletedOne)
+  }
+
+  const isTitleRepositoryEmpty = newTitleRepository === ''
+
   return (
     <>
       <div className={styled.container}>
         <div className={styled.content}>
-          <header className={styled.header}>
-            <img src={LogoUnimar} alt="" />
+          <Header name={name} role={role} />
 
-            <div className={styled.infoUser}>
-              <strong>Yago Vela</strong>
-              <strong>-</strong>
-              <span>Ciência da computação</span>
-            </div>
-          </header>
-
-          <main className={styled.gridRepositorys}>
-            <div className={styled.repository}>
-              <div>
-                <img
-                  className={styled.avatar}
-                  src="https://github.com/yagovelaa.png"
-                  alt=""
-                />
-
-                <div className={styled.infoRepository}>
-                  <strong>unimar-repository</strong>
-                  <div>
-                    <button className={styled.iconButton}>
-                      <ThumbsUp className={styled.likeIcon} size={18} />
-                    </button>
-                    <span>Aplaudir - 10</span>
-                  </div>
-                </div>
-              </div>
-
-              <button className={styled.iconButton}>
-                <Trash className={styled.trashIcon} size={24} />
-              </button>
-            </div>
+          <main className={styled.gridRepositories}>
+            {repositories.map((repository) => (
+              <Repository
+                key={repository.name}
+                name={repository.name}
+                username={username}
+                onDeleteRepository={deleteRepository}
+              />
+            ))}
           </main>
 
           <footer>
-            <form className={styled.form}>
+            <form onSubmit={handleCreateNewRepository} className={styled.form}>
               <input
                 name="repository"
                 type="text"
                 placeholder="Nome do repositório"
                 required
+                value={newTitleRepository}
+                onChange={handleAddNewTextRepository}
               />
-              <button type="submit">
+              <button type="submit" disabled={isTitleRepositoryEmpty}>
                 <PaperPlaneRight size={24} weight="fill" />
               </button>
             </form>
@@ -62,5 +97,3 @@ function App() {
     </>
   )
 }
-
-export default App

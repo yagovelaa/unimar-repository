@@ -23,7 +23,6 @@ This project was made using the following technologies:
 
 - [React](https://reactjs.org/)
 - [Javascript]()
-- [Typescript](https://www.typescriptlang.org/)
 - [Phosphor Icons](https://phosphoricons.com/)
 
 # :construction_worker: Running
